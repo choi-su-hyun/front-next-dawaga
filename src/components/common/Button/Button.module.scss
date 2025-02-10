@@ -1,0 +1,67 @@
+// 버튼 기본 속성
+.btn-style {
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-pretendard);
+  font-size: 1.6rem;
+  background-color: var(--cool-gray200);
+  color: var(--cool-gray600);
+  font-weight: 700;
+}
+.btn-style--have-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ============================= variant [START] =============================
+.cta-btn {
+  font-weight: 700;
+  color: white;
+  background-color: var(--primary);
+}
+.text-cta-btn {
+  font-weight: 600;
+  color: var(--primary-light1);
+  background-color: transparent;
+}
+.text-center {
+  font-weight: 700;
+  color: var(--cool-gray500);
+  background-color: transparent;
+}
+.secondary-btn {
+  font-weight: 700;
+  color: var(--cool-gray900);
+  background-color: var(--secondary);
+}
+.icon-btn {
+  background-color: transparent;
+}
+// ============================= variant [END] =============================
+
+// ============================= size [START] =============================
+.size-x-small {
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-sm);
+}
+.size-small {
+  padding: var(--space-mid3) var(--space-mid5);
+  border-radius: var(--border-radius-mid);
+  font-size: var(--font-mid);
+}
+.icon-btn-size {
+  padding: var(--space-x-sm);
+  font-size: var(--font-mid);
+}
+.text-btn-size {
+  padding: var(--space-x-sm);
+  font-size: var(--font-mid);
+}
+// ============================= size [END] =============================
+.full-width {
+  width: 100%;
+}
