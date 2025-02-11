@@ -237,7 +237,7 @@ const RegisterInvitePageBody: React.FC = ({}) => {
 
       {/* ============================= 주소 검색 [START] ============================= */}
       {isOpenSearchMapModal && (
-        <ModalContainer label="주소 검색" id="SearchMap" position="bottom">
+        <ModalContainer id="SearchMap" position="bottom">
           <SearchMap eventPlaceData={handlePlaceData} />
         </ModalContainer>
       )}
@@ -245,11 +245,7 @@ const RegisterInvitePageBody: React.FC = ({}) => {
 
       {/* ============================= 참여 인원 추가 [START] ============================= */}
       {isOpenAddParticipantsModal && (
-        <ModalContainer
-          label="참여 인원 추가"
-          id="AddParticipants"
-          position="bottom"
-        >
+        <ModalContainer id="AddParticipants" position="bottom">
           <AddParticipants />
         </ModalContainer>
       )}

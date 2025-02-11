@@ -6,7 +6,6 @@ import useModal from "@/hooks/useModal";
 
 interface Props {
   id: ModalType;
-  label?: string; //position이 bottom 일 경우에만 필요
   children: ReactNode;
   position: "center" | "bottom";
   bottomModalHeight?: string;
@@ -14,7 +13,6 @@ interface Props {
 
 function ModalContainer({
   id, //외부클릭 시 해당 모달을 닫기 위해 id를 사용중
-  label,
   position,
   bottomModalHeight,
   children,
@@ -47,7 +45,6 @@ function ModalContainer({
               ref={modalRef}
               style={{ "--modal-height": bottomModalHeight }}
             >
-              <h3 className={style["modal__title"]}>{label}</h3>
               {children}
             </div>
           </div>

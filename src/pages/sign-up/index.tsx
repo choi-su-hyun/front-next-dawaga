@@ -263,7 +263,8 @@ const SignUp: NextPage<Props> = () => {
 
       {/* ============================= 주소 검색 모달 [START] ============================= */}
       {isOpenDaumPostCode && (
-        <ModalContainer label="주소 검색" id="DaumPostCode" position="bottom">
+        <ModalContainer id="DaumPostCode" position="bottom">
+          <h3 className="modal__title">주소 검색</h3>
           <DaumPostcodeEmbed
             onComplete={handleAddressComplete}
             style={{ height: "600px" }}

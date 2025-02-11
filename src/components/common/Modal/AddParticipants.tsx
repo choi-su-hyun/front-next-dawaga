@@ -15,6 +15,7 @@ const AddParticipants = () => {
 
   return (
     <>
+      <h3 className="modal__title">참여 인원 추가</h3>
       <SearchInput
         register={register("participantsSearch")}
         name="participants-search"
