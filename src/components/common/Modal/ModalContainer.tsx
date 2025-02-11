@@ -1,6 +1,5 @@
-import { modalListState, ModalType } from "@/stores/modalStore";
+import { ModalType } from "@/stores/modalStore";
 import { createPortal } from "react-dom";
-import { useRecoilValue } from "recoil";
 import style from "./Modal.module.scss";
 import { ReactNode, useEffect, useRef } from "react";
 import useModal from "@/hooks/useModal";
@@ -20,7 +19,6 @@ function ModalContainer({
   bottomModalHeight,
   children,
 }: Props) {
-  const modalList = useRecoilValue(modalListState);
   const modalRef = useRef<HTMLDivElement>(null);
   const { closeModal } = useModal(id);
 

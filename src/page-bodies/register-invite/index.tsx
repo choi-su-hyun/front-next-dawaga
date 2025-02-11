@@ -31,9 +31,13 @@ const today = dayjs();
 // ============================= 날짜 END =============================
 
 const RegisterInvitePageBody: React.FC = ({}) => {
-  const { openModal: openSearchMapModal, closeModal: closeSearchMapModal } =
-    useModal("SearchMap");
   const {
+    isOpened: isOpenSearchMapModal,
+    openModal: openSearchMapModal,
+    closeModal: closeSearchMapModal,
+  } = useModal("SearchMap");
+  const {
+    isOpened: isOpenAddParticipantsModal,
     openModal: openAddParticipantsModal,
     closeModal: closeAddParticipantsModal,
   } = useModal("AddParticipants");
@@ -232,15 +236,23 @@ const RegisterInvitePageBody: React.FC = ({}) => {
       </section>
 
       {/* ============================= 주소 검색 [START] ============================= */}
-      <ModalContainer label="주소 검색" id="SearchMap" position="bottom">
-        <SearchMap eventPlaceData={handlePlaceData} />
-      </ModalContainer>
+      {isOpenSearchMapModal && (
+        <ModalContainer label="주소 검색" id="SearchMap" position="bottom">
+          <SearchMap eventPlaceData={handlePlaceData} />
+        </ModalContainer>
+      )}
       {/* ============================= 주소 검색 [END] ============================= */}
 
       {/* ============================= 참여 인원 추가 [START] ============================= */}
-      <ModalContainer label="주소" id="AddParticipants" position="bottom">
-        <AddParticipants />
-      </ModalContainer>
+      {isOpenAddParticipantsModal && (
+        <ModalContainer
+          label="참여 인원 추가"
+          id="AddParticipants"
+          position="bottom"
+        >
+          <AddParticipants />
+        </ModalContainer>
+      )}
       {/* ============================= 참여 인원 추가 [END] ============================= */}
     </>
   );

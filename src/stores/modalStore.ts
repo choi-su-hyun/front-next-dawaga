@@ -1,4 +1,4 @@
-import { atom, atomFamily, DefaultValue, selectorFamily } from "recoil";
+import { atom, DefaultValue, selectorFamily } from "recoil";
 
 export type ModalType = "SearchMap" | "DaumPostCode" | "AddParticipants";
 
@@ -14,10 +14,10 @@ export const modalListSelector = selectorFamily({
     (modalId: ModalType) =>
     ({ get }) => {
       const modalList = get(modalListState);
-      return modalList.length !== 0 ? modalList[modalList.length - 1] : null;
+      return modalList.includes(modalId);
     },
   set:
-    (modalId: string) =>
+    (modalId: ModalType) =>
     ({ get, set, reset }, newValue) => {
       const currentList = get(modalListState);
       if (newValue instanceof DefaultValue) {
@@ -31,7 +31,7 @@ export const modalListSelector = selectorFamily({
           set(modalListState, [...currentList, modalId]);
         }
       } else {
-        // modalId가 리스트에 있으면 제거
+        // 해당 modalId가 리스트에 있으면 제거
         set(
           modalListState,
           currentList.filter((item) => item !== modalId)

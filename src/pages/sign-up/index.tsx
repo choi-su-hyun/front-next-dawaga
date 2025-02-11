@@ -45,7 +45,11 @@ const SignUp: NextPage<Props> = () => {
     formState: { errors },
   } = useForm<FormInput>();
   const router = useRouter();
-  const { openModal, closeModal } = useModal();
+  const {
+    isOpened: isOpenDaumPostCode,
+    openModal: openDaumPostCode,
+    closeModal: closeDaumPostCode,
+  } = useModal("DaumPostCode");
   console.log(`router : `, router.query);
 
   const onValid = (data: FormInput) => {
@@ -61,7 +65,7 @@ const SignUp: NextPage<Props> = () => {
     console.log(`data : `, data);
     setValue("postCode", data.zonecode);
     setValue("address", data.address);
-    closeModal("DaumPostCode");
+    closeDaumPostCode();
   };
 
   return (
@@ -202,7 +206,7 @@ const SignUp: NextPage<Props> = () => {
                       type="button"
                       variant="secondary-btn"
                       size="size-x-small"
-                      onClick={() => openModal("DaumPostCode")}
+                      onClick={() => openDaumPostCode()}
                     >
                       주소 검색
                     </Button>
@@ -258,12 +262,14 @@ const SignUp: NextPage<Props> = () => {
       </section>
 
       {/* ============================= 주소 검색 모달 [START] ============================= */}
-      <ModalContainer label="주소 검색" id="DaumPostCode" position="bottom">
-        <DaumPostcodeEmbed
-          onComplete={handleAddressComplete}
-          style={{ height: "600px" }}
-        />
-      </ModalContainer>
+      {isOpenDaumPostCode && (
+        <ModalContainer label="주소 검색" id="DaumPostCode" position="bottom">
+          <DaumPostcodeEmbed
+            onComplete={handleAddressComplete}
+            style={{ height: "600px" }}
+          />
+        </ModalContainer>
+      )}
       {/* ============================= 주소 검색 모달 [END] ============================= */}
     </>
   );
