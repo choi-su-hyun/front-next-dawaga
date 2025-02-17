@@ -42,8 +42,6 @@ const RegisterInvitePageBody: React.FC = ({}) => {
     closeModal: closeAddParticipantsModal,
   } = useModal("AddParticipants");
 
-  const testData = useRecoilValue(modalListState);
-
   // ============================= form [START] =============================
   const {
     handleSubmit,
@@ -111,7 +109,6 @@ const RegisterInvitePageBody: React.FC = ({}) => {
   return (
     <>
       <Seo title="초대장 생성" />
-      {testData}
       <section className="section section--shadow-type">
         <div className="section-container section-container--shadow-type">
           {/* ============================= 작성 폼 [START] ============================= */}
