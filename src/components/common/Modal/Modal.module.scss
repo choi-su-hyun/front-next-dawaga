@@ -31,6 +31,29 @@
       padding: 2rem 1.6rem;
     }
   }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.4rem;
+  }
+  &__title {
+    font-size: var(--font-mid);
+    font-weight: 700;
+    color: var(--cool-gray900);
+  }
+  &__explanation {
+    font-size: var(--font-x-sm);
+    font-weight: 400;
+    color: var(--cool-gray500);
+    &-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-x-sm);
+      margin-bottom: 2.4rem;
+    }
+  }
 }
 
 // ============================= 주소 검색 [START] =============================
