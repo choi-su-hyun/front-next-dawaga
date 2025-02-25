@@ -42,7 +42,12 @@ const SearchMap = ({ eventPlaceData }: IProps) => {
 
   return (
     <>
-      <h3 className="modal__title">주소 검색</h3>
+      <div className={style["modal__header-wrap"]}>
+        <div className={style["modal__header"]}>
+          <h3 className={style["modal__title"]}>주소 검색</h3>
+        </div>
+      </div>
+
       <div className="section-container--gap-md section-container--full-height">
         <SearchInput
           register={register("search")}
