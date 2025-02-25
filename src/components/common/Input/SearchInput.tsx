@@ -51,6 +51,7 @@ const SearchInput: NextPage<Props> = ({
             }`}
           >
             <input
+              className={style["not-border"]}
               {...register}
               {...rest}
               onKeyDown={handleKeyDown}

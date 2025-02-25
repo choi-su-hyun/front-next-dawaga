@@ -47,6 +47,11 @@
     }
   }
 
+  input.not-border {
+    border: none;
+    border-bottom: none;
+  }
+
   &__error-text {
     font-size: var(--font-x-sm);
     font-weight: var(--small-text-font-weight);
@@ -81,7 +86,7 @@
   justify-content: space-between;
   padding: var(--space-x-sm);
   border: none;
-  border-bottom: 0.1rem solid var(--cool-gray500);
+  // border-bottom: 0.1rem solid var(--cool-gray500);
   width: 100%;
   label {
     font-size: var(--font-mid);
