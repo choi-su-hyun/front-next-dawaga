@@ -12,6 +12,7 @@
   input {
     padding: var(--space-x-sm);
     border: none;
+    border-bottom: 0.1rem solid var(--cool-gray500);
     width: 100%;
     font-size: var(--font-mid);
     color: var(--cool-gray700);
@@ -29,6 +30,9 @@
 
     &:focus-visible {
       outline: none;
+    }
+    &:focus {
+      border-bottom: 0.1rem solid var(--primary);
     }
 
     &:focus .text-input-wrap {
