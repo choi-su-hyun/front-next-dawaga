@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchInput from "../Input/SearchInput";
 import { useForm } from "react-hook-form";
 // import { Map, MapMarker } from "react-kakao-maps-sdk";
-import LocationIcon from "@/assets/location.svg";
+import LocationIcon from "@/assets/icon/location.svg";
 import style from "./Modal.module.scss";
 
 export interface IPlaceData {

@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import style from "./Input.module.scss";
 import { InputHTMLAttributes, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-import SearchIcon from "@/assets/search.svg";
+import SearchIcon from "@/assets/icon/search.svg";
 // import LocationIcon from "@/assets/location.svg";
 import Button from "../Button/Button";
 
