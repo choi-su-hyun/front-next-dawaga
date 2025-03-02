@@ -1,11 +1,12 @@
-import { ModalType } from "@/stores/modalStore";
+import { modalListSelector, ModalIdType } from "@/stores/modalStore";
 import { createPortal } from "react-dom";
 import style from "./Modal.module.scss";
 import { ReactNode, useEffect, useRef } from "react";
 import useModal from "@/hooks/useModal";
+import { useRecoilValue } from "recoil";
 
 interface Props {
-  id: ModalType;
+  id: ModalIdType;
   children: ReactNode;
   position: "center" | "bottom";
   bottomModalHeight?: string;
@@ -19,6 +20,7 @@ function ModalContainer({
 }: Props) {
   const modalRef = useRef<HTMLDivElement>(null);
   const { closeModal } = useModal(id);
+  const activeModal = useRecoilValue(modalListSelector(id));
 
   const handleModal = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
@@ -26,7 +28,9 @@ function ModalContainer({
     }
   };
   useEffect(() => {
-    document.addEventListener("mousedown", handleModal);
+    if (activeModal.id === id) {
+      document.addEventListener("mousedown", handleModal);
+    }
 
     return () => {
       document.removeEventListener("mousedown", handleModal);

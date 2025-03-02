@@ -1,16 +1,23 @@
-import { modalListSelector, ModalType } from "@/stores/modalStore";
+import {
+  modalListSelector,
+  modalListState,
+  ModalIdType,
+} from "@/stores/modalStore";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-function useModal(modalId: ModalType) {
+function useModal(modalId: ModalIdType) {
   const setModal = useSetRecoilState(modalListSelector(modalId));
-  const isOpened = useRecoilValue(modalListSelector(modalId));
+  const modalList = useRecoilValue(modalListState);
+  const isOpened = modalList.some(
+    (modalListItem) => modalListItem.id === modalId
+  );
 
   const openModal = () => {
-    setModal(true);
+    setModal({ id: modalId, isOpen: true });
   };
 
   const closeModal = () => {
-    setModal(false);
+    setModal({ id: modalId, isOpen: false });
   };
 
   return { isOpened, openModal, closeModal };
