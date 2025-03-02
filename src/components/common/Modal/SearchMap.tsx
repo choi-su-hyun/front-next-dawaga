@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchInput from "../Input/SearchInput";
 import { useForm } from "react-hook-form";
 // import { Map, MapMarker } from "react-kakao-maps-sdk";
-import LocationIcon from "@/assets/location.svg";
+import LocationIcon from "@/assets/icon/location.svg";
 import style from "./Modal.module.scss";
 
 export interface IPlaceData {
@@ -42,7 +42,12 @@ const SearchMap = ({ eventPlaceData }: IProps) => {
 
   return (
     <>
-      <h3 className="modal__title">주소 검색</h3>
+      <div className={style["modal__header-wrap"]}>
+        <div className={style["modal__header"]}>
+          <h3 className={style["modal__title"]}>주소 검색</h3>
+        </div>
+      </div>
+
       <div className="section-container--gap-md section-container--full-height">
         <SearchInput
           register={register("search")}

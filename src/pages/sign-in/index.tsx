@@ -1,7 +1,7 @@
 // "use client";
 
 import { NextPage } from "next";
-import LogoAndName from "@/assets/logoAndName.svg";
+import LogoAndName from "@/assets/icon/logoAndName.svg";
 import TextInput from "@/components/common/Input/TextInput";
 import { useForm, FieldErrors } from "react-hook-form";
 import Button from "@/components/common/Button/Button";

@@ -14,6 +14,7 @@ import Seo from "@/components/Seo";
 import ModalContainer from "@/components/common/Modal/ModalContainer";
 import useModal from "@/hooks/useModal";
 // import { getStaticPaths } from "next/dist/build/templates/pages";
+import modalStyle from "@/components/common/Modal/Modal.module.scss";
 
 interface Props {
   searchParams: {
@@ -264,7 +265,12 @@ const SignUp: NextPage<Props> = () => {
       {/* ============================= 주소 검색 모달 [START] ============================= */}
       {isOpenDaumPostCode && (
         <ModalContainer id="DaumPostCode" position="bottom">
-          <h3 className="modal__title">주소 검색</h3>
+          <div className={modalStyle["modal__header-wrap"]}>
+            <div className={modalStyle["modal__header"]}>
+              <h3 className={modalStyle["modal__title"]}>주소 검색</h3>
+            </div>
+          </div>
+
           <DaumPostcodeEmbed
             onComplete={handleAddressComplete}
             style={{ height: "600px" }}

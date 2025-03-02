@@ -1,6 +1,10 @@
 import { atom, DefaultValue, selectorFamily } from "recoil";
 
-export type ModalType = "SearchMap" | "DaumPostCode" | "AddParticipants";
+export type ModalType =
+  | "SearchMap"
+  | "DaumPostCode"
+  | "AddParticipants"
+  | "AddParticipantsNonMember";
 
 // ============================= 모달 상태 [START] =============================
 export const modalListState = atom<ModalType[]>({

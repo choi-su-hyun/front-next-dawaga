@@ -54,7 +54,12 @@ function ModalContainer({
         {/* ============================= 모달 위치 - center [START] ============================= */}
         {position === "center" && (
           <div className={style["modal__overlay"]}>
-            <div ref={modalRef}>{children}</div>
+            <div
+              className={`${style["modal__content-box"]} ${style["modal-content--center"]}`}
+              ref={modalRef}
+            >
+              {children}
+            </div>
           </div>
         )}
         {/* ============================= 모달 위치 - center [END] ============================= */}

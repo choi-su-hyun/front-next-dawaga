@@ -2,8 +2,8 @@ import { NextPage } from "next";
 import style from "./Input.module.scss";
 import { InputHTMLAttributes } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-import Calendar from "@/assets/calendar.svg";
-import Clock from "@/assets/clock.svg";
+import Calendar from "@/assets/icon/calendar.svg";
+import Clock from "@/assets/icon/clock.svg";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;

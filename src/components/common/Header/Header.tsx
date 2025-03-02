@@ -1,10 +1,10 @@
 // "use client";
 
 import { NextPage } from "next";
-import Logo from "@/assets/logo.svg";
-import Alarm from "@/assets/alarm.svg";
-import UserIcon from "@/assets/userIcon.svg";
-import Cogwheel from "@/assets/cogwheel.svg";
+import Logo from "@/assets/icon/logo.svg";
+import Alarm from "@/assets/icon/alarm.svg";
+import UserIcon from "@/assets/icon/userIcon.svg";
+import Cogwheel from "@/assets/icon/cogwheel.svg";
 import Link from "next/link";
 import S from "./Header.module.scss";
 import { usePathname } from "next/navigation";
