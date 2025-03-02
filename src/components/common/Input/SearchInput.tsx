@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import style from "./Input.module.scss";
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-import SearchIcon from "@/assets/search.svg";
+import SearchIcon from "@/assets/icon/search.svg";
 // import LocationIcon from "@/assets/location.svg";
 import Button from "../Button/Button";
 
@@ -37,13 +37,27 @@ const SearchInput: NextPage<Props> = ({
       searchAction();
     }
   };
+
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
     <>
       <div className={style["search-input"]}>
         <div className={style["text-input"]}>
           <label htmlFor={name}>{label}</label>
-          <div className={style["text-input-wrap"]}>
-            <input {...register} {...rest} onKeyDown={handleKeyDown} />
+          <div
+            className={`${style["text-input-wrap"]} ${
+              isFocused && style["text-input-wrap--focused"]
+            }`}
+          >
+            <input
+              className={style["not-border"]}
+              {...register}
+              {...rest}
+              onKeyDown={handleKeyDown}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+            />
             <Button
               variant="icon-btn"
               size={"icon-btn-size"}

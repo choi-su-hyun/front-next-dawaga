@@ -1,7 +1,7 @@
 import React from "react";
-import DeleteItem from "@/assets/deleteItem.svg";
+import DeleteItem from "@/assets/icon/deleteItem.svg";
 import Button from "../Button/Button";
-import UserFullback from "@/assets/userFullback.svg";
+import UserFullback from "@/assets/icon/userFullback.svg";
 import style from "./ParticipantsItem.module.scss";
 
 const ParticipantsItem = () => {

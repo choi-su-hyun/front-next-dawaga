@@ -10,7 +10,7 @@ import SearchMap, { IPlaceData } from "@/components/common/Modal/SearchMap";
 import useModal from "@/hooks/useModal";
 import ModalContainer from "@/components/common/Modal/ModalContainer";
 import { useEffect, useRef, useState } from "react";
-import AddIcon from "@/assets/add.svg";
+import AddIcon from "@/assets/icon/add.svg";
 import ParticipantsItem from "@/components/common/ParticipantsItem/ParticipantsItem";
 import AddParticipants from "@/components/common/Modal/AddParticipants";
 import { useRecoilValue } from "recoil";
@@ -41,8 +41,6 @@ const RegisterInvitePageBody: React.FC = ({}) => {
     openModal: openAddParticipantsModal,
     closeModal: closeAddParticipantsModal,
   } = useModal("AddParticipants");
-
-  const testData = useRecoilValue(modalListState);
 
   // ============================= form [START] =============================
   const {
@@ -111,7 +109,6 @@ const RegisterInvitePageBody: React.FC = ({}) => {
   return (
     <>
       <Seo title="초대장 생성" />
-      {testData}
       <section className="section section--shadow-type">
         <div className="section-container section-container--shadow-type">
           {/* ============================= 작성 폼 [START] ============================= */}
@@ -215,7 +212,7 @@ const RegisterInvitePageBody: React.FC = ({}) => {
                   추가
                 </Button>
               </div>
-              <div className="">
+              <div className="scroll-wrap scroll-wrap--full-height">
                 <ParticipantsItem />
               </div>
             </div>
@@ -235,21 +232,21 @@ const RegisterInvitePageBody: React.FC = ({}) => {
         </div>
       </section>
 
-      {/* ============================= 주소 검색 [START] ============================= */}
+      {/* ============================= 주소 검색 모달 [START] ============================= */}
       {isOpenSearchMapModal && (
         <ModalContainer id="SearchMap" position="bottom">
           <SearchMap eventPlaceData={handlePlaceData} />
         </ModalContainer>
       )}
-      {/* ============================= 주소 검색 [END] ============================= */}
+      {/* ============================= 주소 검색 모달 [END] ============================= */}
 
-      {/* ============================= 참여 인원 추가 [START] ============================= */}
+      {/* ============================= 참여 인원 추가 모달 [START] ============================= */}
       {isOpenAddParticipantsModal && (
         <ModalContainer id="AddParticipants" position="bottom">
           <AddParticipants />
         </ModalContainer>
       )}
-      {/* ============================= 참여 인원 추가 [END] ============================= */}
+      {/* ============================= 참여 인원 추가 모달 [END] ============================= */}
     </>
   );
 };

@@ -26,6 +26,26 @@
 }
 // ============================= 섹션 container END =============================
 
+// ============================= wrapper 모음 [START] =============================
+.scroll-wrap {
+  overflow-y: auto;
+  &--full-height {
+    height: 100%;
+  }
+  &--160h {
+    height: 16rem;
+  }
+}
+
+.modal-height-wide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+// ============================= wrapper 모음 [END] =============================
+
 // 레이아웃 좌/우/중앙으로 flex
 .center-box {
   display: flex;
@@ -50,12 +70,10 @@
   }
 }
 
-.modal__title {
-  margin-bottom: 2.4rem;
-  font-size: var(--font-mid);
+.bold {
   font-weight: 700;
-  color: var(--cool-gray900);
 }
+
 // ============================= 제목 [END] =============================
 
 // ============================= form 관련 START =============================
