@@ -22,6 +22,12 @@
   color: white;
   background-color: var(--primary);
 }
+.cta-ghost-btn {
+  font-weight: 700;
+  color: var(--primary);
+  border: 0.1rem solid var(--primary);
+  background-color: transparent;
+}
 .text-cta-btn {
   font-weight: 600;
   color: var(--primary-light1);
@@ -40,9 +46,22 @@
 .icon-btn {
   background-color: transparent;
 }
+.section-row-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  padding: 2rem 1.2rem;
+}
 // ============================= variant [END] =============================
 
 // ============================= size [START] =============================
+.size-xx-small {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-x-sm);
+}
 .size-x-small {
   padding: 0.8rem 1.6rem;
   border-radius: var(--border-radius-sm);

@@ -101,6 +101,31 @@
   gap: var(--space-mid3);
 }
 
+// ============================= 팝업 [START] =============================
+.popup {
+  &-btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-mid);
+    margin-top: 2.4rem;
+  }
+
+  &__title {
+    color: var(--cool-gray800);
+    font-size: var(--font-mid3);
+    font-weight: 700;
+  }
+
+  &-text-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-mid);
+  }
+}
+// ============================= 팝업 [END] =============================
+
 // ============================= 주소 검색 [START] =============================
 .location-list {
   position: relative;

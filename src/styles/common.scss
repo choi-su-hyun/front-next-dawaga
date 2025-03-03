@@ -24,6 +24,10 @@
     height: 100%;
   }
 }
+
+.gray-background {
+  background-color: var(--cool-gray100);
+}
 // ============================= 섹션 container END =============================
 
 // ============================= wrapper 모음 [START] =============================
@@ -72,6 +76,28 @@
 
 .bold {
   font-weight: 700;
+}
+
+.setting-title {
+  font-weight: 700;
+  font-size: var(--font-mid);
+  color: var(--cool-gray900);
+
+  &-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--left {
+      justify-content: flex-start;
+    }
+  }
+}
+
+.edited-title {
+  font-weight: 700;
+  font-size: var(--font-mid);
+  color: var(--cool-gray700);
 }
 
 // ============================= 제목 [END] =============================

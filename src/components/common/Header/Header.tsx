@@ -9,9 +9,11 @@ import Link from "next/link";
 import S from "./Header.module.scss";
 import { usePathname } from "next/navigation";
 import { getPageName } from "@/utils/pageHeaderName";
+import { useRecoilValue } from "recoil";
 
 const Header: NextPage = ({}) => {
   const pathName = usePathname();
+
   return (
     <header className={S.header}>
       <Link href={"/"}>
@@ -25,6 +27,7 @@ const Header: NextPage = ({}) => {
               <Alarm />
             </Link>
           </li>
+          {}
           <li>
             <Link href={"/sign-in"}>
               <UserIcon />

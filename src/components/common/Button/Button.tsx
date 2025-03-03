@@ -6,12 +6,15 @@ type ButtonVariantType =
   | "cta-btn"
   | "text-cta-btn"
   | "ghost-btn"
+  | "cta-ghost-btn"
   | "text-center"
   | "secondary-btn"
-  | "icon-btn";
+  | "icon-btn"
+  | "section-row-btn";
 type ButtonSizeType =
-  | "size-small"
+  | "size-xx-small"
   | "size-x-small"
+  | "size-small"
   | "icon-btn-size"
   | "text-btn-size";
 

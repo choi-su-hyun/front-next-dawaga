@@ -7,6 +7,9 @@ export const getPageName = (pathName: string) => {
     case "/sign-up":
       pageName = "회원가입";
       break;
+    case "/my-page":
+      pageName = "마이페이지";
+      break;
 
     default:
       pageName = "";
