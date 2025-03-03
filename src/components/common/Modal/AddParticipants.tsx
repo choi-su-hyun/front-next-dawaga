@@ -88,7 +88,9 @@ const AddParticipants = () => {
       {/* ============================= 비회원 추가 [START] ============================= */}
       {isOpenAddParticipantsNonMemberModal && (
         <ModalContainer id="AddParticipantsNonMember" position="center">
-          <AddParticipantsNonMember />
+          <AddParticipantsNonMember
+            closeFunc={closeAddParticipantsNonMemberModal}
+          />
         </ModalContainer>
       )}
       {/* ============================= 비회원 추가 [END] ============================= */}

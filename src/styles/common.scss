@@ -122,6 +122,10 @@
   &--row {
     flex-direction: row;
   }
+
+  &--gap-top {
+    margin-top: var(--space-mid5);
+  }
 }
 // ============================= 버튼 배치 END =============================
 

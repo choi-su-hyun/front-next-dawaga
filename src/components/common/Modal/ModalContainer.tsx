@@ -59,7 +59,7 @@ function ModalContainer({
         {position === "center" && (
           <div className={style["modal__overlay"]}>
             <div
-              className={`${style["modal__content-box"]} ${style["modal-content--center"]}`}
+              className={`${style["modal__content-box"]} ${style["modal--center"]}`}
               ref={modalRef}
             >
               {children}
