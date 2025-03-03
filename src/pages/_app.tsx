@@ -3,6 +3,7 @@ import "./globals.scss";
 import "@/styles/common.scss";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
+import "@/configs/recoil";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

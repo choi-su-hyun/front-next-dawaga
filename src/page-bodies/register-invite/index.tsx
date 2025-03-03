@@ -13,8 +13,6 @@ import { useEffect, useRef, useState } from "react";
 import AddIcon from "@/assets/icon/add.svg";
 import ParticipantsItem from "@/components/common/ParticipantsItem/ParticipantsItem";
 import AddParticipants from "@/components/common/Modal/AddParticipants";
-import { useRecoilValue } from "recoil";
-import { modalListState } from "@/stores/modalStore";
 
 interface FormInput {
   title: string;
