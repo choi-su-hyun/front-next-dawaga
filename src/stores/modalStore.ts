@@ -33,9 +33,6 @@ export const modalListSelector = selectorFamily<ModalType, ModalIdType>({
         reset(modalListState);
         return;
       }
-      console.log(`currentList : `, currentList);
-      console.log(`modalId : `, modalId);
-      console.log(`newValue : `, newValue);
 
       if (!currentList.some((modalListItem) => modalListItem.id === modalId)) {
         // modalId가 리스트에 없으면 추가
