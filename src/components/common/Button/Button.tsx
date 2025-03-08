@@ -13,6 +13,7 @@ type ButtonVariantType =
   | "section-row-btn";
 type ButtonSizeType =
   | "size-xx-small"
+  | "size-xx-small--text-mid"
   | "size-x-small"
   | "size-small"
   | "icon-btn-size"
@@ -25,6 +26,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   leftSlot?: ReactNode; //버튼 왼쪽에 넣는 아이콘
   rightSlot?: ReactNode; //버튼 오른쪽에 넣는 아이콘
   isFullWidth?: boolean; //전체 크기 버튼
+  isFullHeight?: boolean; //전체 크기 버튼
 }
 
 const Button: NextPage<Props> = ({
@@ -35,6 +37,7 @@ const Button: NextPage<Props> = ({
   leftSlot,
   rightSlot,
   isFullWidth,
+  isFullHeight,
   ...rest
 }) => {
   return (
@@ -42,7 +45,7 @@ const Button: NextPage<Props> = ({
       <button
         className={`${variant && style[variant]} ${size && style[size]} ${
           isFullWidth ? style["full-width"] : ""
-        } ${style["btn-style"]} ${
+        } ${isFullHeight ? style["full-height"] : ""} ${style["btn-style"]} ${
           leftSlot || rightSlot ? style["btn-style--have-icon"] : ""
         }`}
         {...rest}

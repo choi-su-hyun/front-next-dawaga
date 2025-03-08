@@ -28,7 +28,7 @@ const Popup = () => {
                   onClick={popup.confirm}
                   isFullWidth
                 >
-                  변경
+                  {popup.confirmBtnText ?? "확인"}
                 </Button>
                 <Button
                   size={"size-small"}

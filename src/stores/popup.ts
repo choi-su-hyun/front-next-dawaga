@@ -5,6 +5,7 @@ export type PopupType = {
   content: string; // 보여줄 문구
   subtext?: string; // 보여줄 문구 (서브)
   confirm?: () => void; // 확인 동작
+  confirmBtnText?: string; // 확인 버튼 글자
   confirmText?: string; // 확인시 문구
   cancel?: () => void; // 취소 동작
   cancelText?: string; // 취소시 문구

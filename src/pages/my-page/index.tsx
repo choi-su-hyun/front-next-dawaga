@@ -8,6 +8,12 @@ import Button from "@/components/common/Button/Button";
 import { useState } from "react";
 import { popupStore } from "@/stores/popup";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import TextInput from "@/components/common/Input/TextInput";
+import { useForm } from "react-hook-form";
+import useModal from "@/hooks/useModal";
+import ModalContainer from "@/components/common/Modal/ModalContainer";
+import DaumPostcodeEmbed, { Address } from "react-daum-postcode";
+import modalStyle from "@/components/common/Modal/Modal.module.scss";
 
 const MyPage: NextPage = ({}) => {
   const setPopup = useSetRecoilState(popupStore);
@@ -31,6 +37,35 @@ const MyPage: NextPage = ({}) => {
     });
   };
   // ============================= 프로필 이미지 수정 [END] =============================
+
+  // ============================= 닉네임 편집 [START] =============================
+  const [isNickNameEdit, setIsNickNameEdit] = useState(false);
+  const { register: nickNameRegister, handleSubmit: nickNameHandleSubmit } =
+    useForm<{ nickName: string }>();
+  // ============================= 닉네임 편집 [END] =============================
+
+  // ============================= 주소 편집 [START] =============================
+  const [isAddressEdit, setIsAddressEdit] = useState(false);
+  const {
+    register: addressRegister,
+    handleSubmit: addressHandleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<{ postCode: string; address: string; addressDetail: string }>();
+
+  const handleAddressComplete = (data: Address) => {
+    console.log(`data : `, data);
+    setValue("postCode", data.zonecode);
+    setValue("address", data.address);
+    closeDaumPostCode();
+  };
+
+  const {
+    isOpened: isOpenDaumPostCode,
+    openModal: openDaumPostCode,
+    closeModal: closeDaumPostCode,
+  } = useModal("DaumPostCode");
+  // ============================= 주소 편집 [END] =============================
 
   return (
     <>
@@ -94,6 +129,7 @@ const MyPage: NextPage = ({}) => {
                   사용자 이름
                 </span>
               </div>
+
               <div className={myPageStyle["profile-content__row"]}>
                 <h5 className={myPageStyle["profile-content__title"]}>
                   아이디
@@ -102,17 +138,42 @@ const MyPage: NextPage = ({}) => {
                   아이디
                 </span>
               </div>
+
               <div className={myPageStyle["profile-content__row"]}>
                 <h5 className={myPageStyle["profile-content__title"]}>
                   닉네임
                 </h5>
                 <div className={myPageStyle["profile-content__value-wrap"]}>
-                  <span className={myPageStyle["profile-content__value"]}>
-                    닉네임
-                  </span>
-                  <Button size={"size-xx-small"}>편집</Button>
+                  {!isNickNameEdit ? (
+                    <span className={myPageStyle["profile-content__value"]}>
+                      닉네임
+                    </span>
+                  ) : (
+                    <TextInput
+                      name="nickName"
+                      register={nickNameRegister("nickName")}
+                    />
+                  )}
+                  <Button
+                    variant={isNickNameEdit ? "cta-btn" : undefined}
+                    size={"size-xx-small"}
+                    onClick={() => {
+                      if (!isNickNameEdit) {
+                        setIsNickNameEdit(true);
+                      } else {
+                        setPopup({
+                          content: "닉네임을 저장하시겠습니까?",
+                          // TODO : 저장 api 필요
+                          confirm: () => {},
+                        });
+                      }
+                    }}
+                  >
+                    {isNickNameEdit ? "저장" : "편집"}
+                  </Button>
                 </div>
               </div>
+
               <div className={myPageStyle["profile-content__row"]}>
                 <h5 className={myPageStyle["profile-content__title"]}>
                   가입일자
@@ -121,15 +182,79 @@ const MyPage: NextPage = ({}) => {
                   가입일자
                 </span>
               </div>
+
               <div className={myPageStyle["profile-content__row"]}>
                 <h5 className={myPageStyle["profile-content__title"]}>
                   집 주소
                 </h5>
-                <div className={myPageStyle["profile-content__value-wrap"]}>
-                  <span className={myPageStyle["profile-content__value"]}>
-                    집 주소
-                  </span>
-                  <Button size={"size-xx-small"}>편집</Button>
+                <div
+                  className={`${myPageStyle["profile-content__value-wrap"]}`}
+                >
+                  {!isAddressEdit ? (
+                    <span className={myPageStyle["profile-content__value"]}>
+                      집주소
+                    </span>
+                  ) : (
+                    <div className="address-wrap">
+                      <div className="address-input-wrap">
+                        {/* 우편번호 */}
+                        <TextInput
+                          register={addressRegister("postCode", {
+                            required: {
+                              value: true,
+                              message: "주소 검색을 통해 주소를 입력해주세요",
+                            },
+                          })}
+                          type="text"
+                          name="postCode"
+                          placeholder="우편번호"
+                          disabled
+                          errorText={errors.postCode?.message}
+                        />
+                        <Button
+                          variant={"secondary-btn"}
+                          type="button"
+                          size="size-xx-small"
+                          onClick={() => openDaumPostCode()}
+                        >
+                          검색
+                        </Button>
+                      </div>
+
+                      {/* 주소 */}
+                      <TextInput
+                        register={addressRegister("address", {
+                          required: {
+                            value: true,
+                            message: "주소 검색을 통해 주소를 입력해주세요",
+                          },
+                        })}
+                        type="text"
+                        name="address"
+                        placeholder="주소"
+                        disabled
+                        errorText={errors.address?.message}
+                      />
+                    </div>
+                  )}
+                  <Button
+                    variant={isAddressEdit ? "cta-btn" : undefined}
+                    size={"size-xx-small"}
+                    isFullHeight={isAddressEdit}
+                    onClick={() => {
+                      if (!isAddressEdit) {
+                        setIsAddressEdit(true);
+                      } else {
+                        setPopup({
+                          content: "주소를 저장하시겠습니까?",
+                          // TODO : 저장 api 필요
+                          confirm: () => {},
+                        });
+                      }
+                    }}
+                  >
+                    {isAddressEdit ? "저장" : "편집"}
+                  </Button>
                 </div>
               </div>
             </div>
@@ -147,6 +272,23 @@ const MyPage: NextPage = ({}) => {
           </div>
         </section>
       </div>
+
+      {/* ============================= 주소 검색 모달 [START] ============================= */}
+      {isOpenDaumPostCode && (
+        <ModalContainer id="DaumPostCode" position="bottom">
+          <div className={modalStyle["modal__header-wrap"]}>
+            <div className={modalStyle["modal__header"]}>
+              <h3 className={modalStyle["modal__title"]}>주소 검색</h3>
+            </div>
+          </div>
+
+          <DaumPostcodeEmbed
+            onComplete={handleAddressComplete}
+            style={{ height: "600px" }}
+          />
+        </ModalContainer>
+      )}
+      {/* ============================= 주소 검색 모달 [END] ============================= */}
     </>
   );
 };
