@@ -4,7 +4,8 @@ export type ModalIdType =
   | "SearchMap"
   | "DaumPostCode"
   | "AddParticipants"
-  | "AddParticipantsNonMember";
+  | "AddParticipantsNonMember"
+  | "InvitationCreation";
 
 export type ModalType = {
   id: ModalIdType;

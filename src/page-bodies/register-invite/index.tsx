@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 import AddIcon from "@/assets/icon/add.svg";
 import ParticipantsItem from "@/components/common/ParticipantsItem/ParticipantsItem";
 import AddParticipants from "@/components/common/Modal/AddParticipants";
+import InvitationCreation from "@/components/common/Modal/InvitationCreation";
 
 interface FormInput {
   title: string;
@@ -103,6 +104,14 @@ const RegisterInvitePageBody: React.FC = ({}) => {
     });
   }, [mapRef]);
   // ============================= 지도 [END] =============================
+
+  // ============================= 초대장 생성 [START] =============================
+  const {
+    isOpened: isOpenInvitationCreationModal,
+    openModal: openInvitationCreationModal,
+    closeModal: closeInvitationCreationModal,
+  } = useModal("InvitationCreation");
+  // ============================= 초대장 생성 [END] =============================
 
   return (
     <>
@@ -220,11 +229,15 @@ const RegisterInvitePageBody: React.FC = ({}) => {
               <Button size="size-small" type="button">
                 취소
               </Button>
-              <Link href="/sign-up" className="link-btn">
-                <Button variant="cta-btn" size="size-small" isFullWidth>
-                  약속 만들기
-                </Button>
-              </Link>
+              <Button
+                variant="cta-btn"
+                size="size-small"
+                type="button"
+                onClick={() => openInvitationCreationModal()}
+                isFullWidth
+              >
+                약속 만들기
+              </Button>
             </div>
           </form>
         </div>
@@ -245,6 +258,14 @@ const RegisterInvitePageBody: React.FC = ({}) => {
         </ModalContainer>
       )}
       {/* ============================= 참여 인원 추가 모달 [END] ============================= */}
+
+      {/* ============================= 초대장 생성 확인 모달 [START] ============================= */}
+      {isOpenInvitationCreationModal && (
+        <ModalContainer id="InvitationCreation" position="center">
+          <InvitationCreation closeFunc={closeInvitationCreationModal} />
+        </ModalContainer>
+      )}
+      {/* ============================= 초대장 생성 확인 모달 [END] ============================= */}
     </>
   );
 };
