@@ -32,7 +32,8 @@ const AddParticipantsNonMember = ({ closeFunc }: Props) => {
               비회원 초대인원 추가하기
             </h2>
             <p className={style["modal__sub-text"]}>
-              초대장 전송 시 비회원 사용자에게 초대링크가 전달됩니다.
+              초대장 전송 시 비회원 사용자에게
+              <br /> 초대링크가 전달됩니다.
             </p>
           </div>
 
