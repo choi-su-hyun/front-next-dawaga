@@ -1,19 +1,46 @@
-export const getPageName = (pathName: string) => {
-  let pageName;
+interface IPageHeader {
+  pageName: string;
+  canBack: boolean;
+}
+
+export const getPageName = (pathName: string): IPageHeader => {
   switch (pathName) {
+    case "/":
+      return {
+        pageName: "",
+        canBack: false,
+      };
+      break;
     case "/sign-in":
-      pageName = "로그인";
+      return {
+        pageName: "로그인",
+        canBack: true,
+      };
       break;
     case "/sign-up":
-      pageName = "회원가입";
+      return {
+        pageName: "회원가입",
+        canBack: true,
+      };
       break;
     case "/my-page":
-      pageName = "마이페이지";
+      return {
+        pageName: "마이페이지",
+        canBack: true,
+      };
+      break;
+    case "/invite-success":
+      return {
+        pageName: "초대장 전송완료",
+        canBack: true,
+      };
       break;
 
     default:
-      pageName = "";
+      return {
+        pageName: "",
+        canBack: false,
+      };
       break;
   }
-  return pageName;
 };
