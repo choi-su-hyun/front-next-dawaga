@@ -9,15 +9,22 @@ import Link from "next/link";
 import S from "./Header.module.scss";
 import { usePathname } from "next/navigation";
 import { getPageName } from "@/utils/pageHeaderName";
+import { useRecoilValue } from "recoil";
+import GoBackIcon from "@/assets/icon/goBack.svg";
 
 const Header: NextPage = ({}) => {
   const pathName = usePathname();
+
   return (
     <header className={S.header}>
-      <Link href={"/"}>
-        <Logo />
-      </Link>
-      <h1>{getPageName(pathName)}</h1>
+      {getPageName(pathName).canBack ? (
+        <GoBackIcon />
+      ) : (
+        <Link href={"/"}>
+          <Logo />
+        </Link>
+      )}
+      <h1>{getPageName(pathName).pageName}</h1>
       <nav>
         <ul>
           <li>
@@ -25,6 +32,7 @@ const Header: NextPage = ({}) => {
               <Alarm />
             </Link>
           </li>
+          {}
           <li>
             <Link href={"/sign-in"}>
               <UserIcon />

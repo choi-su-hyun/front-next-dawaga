@@ -66,7 +66,7 @@ const DateInput: NextPage<Props> = ({
             />
             <div className={style["column2-input"]}>
               <label htmlFor={dateName}>{dateValue}</label>
-              <Calendar />
+              <Calendar fill={"#A3B3C2"} />
             </div>
             {dateErrorText && (
               <span className={style["text-input__error-text"]}>
@@ -95,7 +95,7 @@ const DateInput: NextPage<Props> = ({
             />
             <div className={style["column2-input"]}>
               <label htmlFor={timeName}>{timeValue}</label>
-              <Clock />
+              <Clock fill={"#A3B3C2"} />
             </div>
             {timeErrorText && (
               <span className={style["text-input__error-text"]}>

@@ -14,7 +14,11 @@ const SearchedParticipantsItem = ({ name, thumbnail, isNonMember }: IProps) => {
     <>
       <div className={style["item"]}>
         <div className={style["item__left"]}>
-          {thumbnail ? <img src={thumbnail} alt="" /> : <UserFullback />}
+          {thumbnail ? (
+            <img src={thumbnail} alt="" />
+          ) : (
+            <UserFullback width={"2.4rem"} />
+          )}
           <span className={style["item__left__name"]}>{name}</span>
           {isNonMember && (
             <span className={style["item__left__non-member"]}>비회원</span>

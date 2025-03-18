@@ -30,7 +30,7 @@ const AddParticipants = () => {
   return (
     <>
       <div className="modal-height-wide">
-        <div>
+        <div className={style["modal__content-wrap"]}>
           <div className={style["modal__header-wrap"]}>
             <div className={style["modal__header"]}>
               <h3 className={style["modal__title"]}>참여 인원 추가</h3>
@@ -52,29 +52,31 @@ const AddParticipants = () => {
             </div>
           </div>
 
-          <SearchInput
-            register={register("participantsSearch")}
-            name="participants-search"
-            searchAction={searchParticipants}
-            placeholder="검색어를 입력하세요."
-          />
-
-          <div
-            className={`scroll-wrap scroll-wrap--160h ${style["scroll-wrap--margin-top"]}`}
-          >
-            <SearchedParticipantsItem name={"친구"} />
-          </div>
-
-          <div className={style["modal__header-wrap"]}>
-            <div className={style["modal__header"]}>
-              <h3 className={style["modal__title"]}>초대할 비회원 인원</h3>
+          <div>
+            <SearchInput
+              register={register("participantsSearch")}
+              name="participants-search"
+              searchAction={searchParticipants}
+              placeholder="검색어를 입력하세요."
+            />
+            <div
+              className={`scroll-wrap scroll-wrap--160h ${style["scroll-wrap--margin-top"]}`}
+            >
+              <SearchedParticipantsItem name={"친구"} />
             </div>
           </div>
 
-          <div
-            className={`scroll-wrap scroll-wrap--160h ${style["scroll-wrap--margin-top"]}`}
-          >
-            <SearchedParticipantsItem name={"친구"} isNonMember />
+          <div>
+            <div className={style["modal__header-wrap"]}>
+              <div className={style["modal__header"]}>
+                <h3 className={style["modal__title"]}>초대할 비회원 인원</h3>
+              </div>
+            </div>
+            <div
+              className={`scroll-wrap scroll-wrap--160h ${style["scroll-wrap--margin-top"]}`}
+            >
+              <SearchedParticipantsItem name={"친구"} isNonMember />
+            </div>
           </div>
         </div>
 

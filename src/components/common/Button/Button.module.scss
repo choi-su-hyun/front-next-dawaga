@@ -22,6 +22,12 @@
   color: white;
   background-color: var(--primary);
 }
+.cta-ghost-btn {
+  font-weight: 700;
+  color: var(--primary);
+  border: 0.1rem solid var(--primary);
+  background-color: transparent;
+}
 .text-cta-btn {
   font-weight: 600;
   color: var(--primary-light1);
@@ -34,15 +40,29 @@
 }
 .secondary-btn {
   font-weight: 700;
-  color: var(--cool-gray900);
+  color: var(--cool-gray800);
   background-color: var(--secondary);
 }
 .icon-btn {
   background-color: transparent;
 }
+.section-row-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  padding: 2rem 1.2rem;
+}
 // ============================= variant [END] =============================
 
 // ============================= size [START] =============================
+.size-xx-small {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-sm);
+  font-weight: 400;
+}
 .size-x-small {
   padding: 0.8rem 1.6rem;
   border-radius: var(--border-radius-sm);
@@ -64,4 +84,7 @@
 // ============================= size [END] =============================
 .full-width {
   width: 100%;
+}
+.full-height {
+  height: 100%;
 }
