@@ -1,10 +1,16 @@
 import { atom, DefaultValue, selectorFamily } from "recoil";
 
-export type ModalType =
+export type ModalIdType =
   | "SearchMap"
   | "DaumPostCode"
   | "AddParticipants"
-  | "AddParticipantsNonMember";
+  | "AddParticipantsNonMember"
+  | "InvitationCreation";
+
+export type ModalType = {
+  id: ModalIdType;
+  isOpen: boolean;
+};
 
 // ============================= 모달 상태 [START] =============================
 export const modalListState = atom<ModalType[]>({
@@ -12,16 +18,16 @@ export const modalListState = atom<ModalType[]>({
   default: [],
 });
 
-export const modalListSelector = selectorFamily({
+export const modalListSelector = selectorFamily<ModalType, ModalIdType>({
   key: "modalListSelector",
   get:
-    (modalId: ModalType) =>
+    (modalId: ModalIdType) =>
     ({ get }) => {
       const modalList = get(modalListState);
-      return modalList.includes(modalId);
+      return modalList[modalList.length - 1];
     },
   set:
-    (modalId: ModalType) =>
+    (modalId: ModalIdType) =>
     ({ get, set, reset }, newValue) => {
       const currentList = get(modalListState);
       if (newValue instanceof DefaultValue) {
@@ -29,16 +35,14 @@ export const modalListSelector = selectorFamily({
         return;
       }
 
-      if (newValue) {
-        if (!currentList.includes(modalId)) {
-          // modalId가 리스트에 없으면 추가
-          set(modalListState, [...currentList, modalId]);
-        }
+      if (!currentList.some((modalListItem) => modalListItem.id === modalId)) {
+        // modalId가 리스트에 없으면 추가
+        set(modalListState, [...currentList, newValue]);
       } else {
         // 해당 modalId가 리스트에 있으면 제거
         set(
           modalListState,
-          currentList.filter((item) => item !== modalId)
+          currentList.filter((item) => item.id !== modalId)
         );
       }
     },

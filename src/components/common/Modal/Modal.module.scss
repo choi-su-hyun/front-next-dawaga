@@ -31,12 +31,17 @@
       padding: 2rem 1.6rem;
     }
 
-    &.modal-content--center {
+    &.modal--center {
       width: calc(100% - 3.2rem);
       margin: 1.6rem;
-      height: var(--modal-height, 60rem);
       padding: 2rem 1.6rem;
     }
+  }
+
+  &__content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
   }
 
   &__header {
@@ -48,12 +53,13 @@
       display: flex;
       flex-direction: column;
       gap: var(--space-mid);
-      margin-bottom: 2.4rem;
     }
 
     &--center {
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      gap: var(--space-mid);
     }
   }
 
@@ -64,7 +70,9 @@
 
     &--center {
       font-size: var(--font-mid3);
+      font-weight: 700;
       text-align: center;
+      color: var(--cool-gray800);
     }
   }
 
@@ -79,11 +87,50 @@
       gap: var(--space-x-sm);
     }
   }
+
+  &__sub-text {
+    font-size: var(--font-sm);
+    font-weight: 400;
+    color: var(--cool-gray600);
+    line-height: 150%;
+    text-align: center;
+  }
 }
 
 .scroll-wrap--margin-top {
   margin-top: var(--space-mid);
 }
+
+.title-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-mid3);
+}
+
+// ============================= 팝업 [START] =============================
+.popup {
+  &-btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-mid);
+    margin-top: 2.4rem;
+  }
+
+  &__title {
+    color: var(--cool-gray800);
+    font-size: var(--font-mid3);
+    font-weight: 700;
+  }
+
+  &-text-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-mid);
+  }
+}
+// ============================= 팝업 [END] =============================
 
 // ============================= 주소 검색 [START] =============================
 .location-list {
@@ -140,6 +187,72 @@
   overflow: hidden;
 }
 // ============================= 지도 END =============================
+
+// ============================= 초대장 UI [START] =============================
+.invitation {
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-mid2);
+  }
+
+  &__info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    color: var(--cool-gray600);
+    font-size: var(--font-sm);
+    font-weight: 700;
+  }
+
+  &__value {
+    color: var(--cool-gray800);
+    font-size: var(--font-sm);
+    font-weight: 700;
+  }
+
+  &__time-chip {
+    display: flex;
+    align-items: center;
+    gap: var(--space-x-sm);
+    padding: var(--space-x-sm);
+    background-color: var(--cool-gray100);
+    border-radius: var(--border-radius-x-sm);
+    color: var(--primary);
+    font-size: var(--font-sm);
+    font-weight: 400;
+
+    &-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-mid);
+    }
+  }
+
+  &__participant-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-x-sm);
+    width: 100%;
+    max-width: 19.6rem;
+
+    &__row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-x-sm);
+      width: 100%;
+      padding: var(--space-x-sm);
+      border-radius: var(--border-radius-x-sm);
+      font-size: var(--font-x-sm);
+      background-color: var(--cool-gray100);
+      color: var(--cool-gray700);
+    }
+  }
+}
+// ============================= 초대장 UI [END] =============================
 
 // ============================= 애니메이션 START =============================
 @keyframes slideUp {

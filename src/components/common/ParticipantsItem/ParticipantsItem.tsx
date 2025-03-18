@@ -10,7 +10,7 @@ const ParticipantsItem = () => {
       <div className={style["participants-item"]}>
         <div className={style["text-wrap"]}>
           {/* <img src="" alt="" /> */}
-          <UserFullback />
+          <UserFullback width={"2.4rem"} />
           <h4>참여자</h4>
         </div>
 

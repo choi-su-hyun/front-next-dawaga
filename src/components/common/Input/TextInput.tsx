@@ -8,7 +8,9 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   errorText?: string;
   successText?: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
+  value?: string;
+  changeFunc?: () => void;
 }
 
 const TextInput: NextPage<Props> = ({
@@ -17,12 +19,20 @@ const TextInput: NextPage<Props> = ({
   errorText,
   successText,
   register,
+  value,
+  changeFunc,
   ...rest
 }) => {
   return (
     <div className={style["text-input"]}>
       <label htmlFor={name}>{label}</label>
-      <input {...register} {...rest} />
+
+      {register ? (
+        <input {...register} {...rest} />
+      ) : (
+        <input value={value} onChange={changeFunc} {...rest} />
+      )}
+
       {errorText && (
         <span className={style["text-input__error-text"]}>{errorText}</span>
       )}
